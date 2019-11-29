@@ -1,0 +1,66 @@
+从远程仓库去获取代码:
+$ 	git clone 远程仓库的地址curl 	(要在本地保存代码的文件夹的名字)
+
+将本地项目发布到gitup
+
+1. 把github上面的仓库克隆到本地
+$	git clone https://github.com/CKTim/BlueTooth.git（https://github.com/CKTim/BlueTooth.git替换成你之前复制的地址）
+
+这个步骤以后你的本地项目文件夹下面就会多出个文件夹，该文件夹名即为你github上面的项目名，如图我多出了个Test文件夹，
+我们把本地项目文件夹下的所有文件（除了新多出的那个文件夹不用），其余都复制到那个新多出的文件夹下，
+
+2.cd Test，进入Test文件夹
+$	git add .        		（注：别忘记后面的.，此操作是把Test文件夹下面的文件都添加进来）
+$	git commit  -m  "提交信息"  	（注：“提交信息”里面换成你需要，如“first commit”）
+$	git push -u origin master  	  (注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码）
+
+
+把本地修改了的代码 同步（上传）到远程仓库：
+$	git push 远程仓库地址 本地分支名:远程分支名
+
+远程仓库中的内容更新后，如何获取更新了的内容：
+$	git pull 远程仓库地址 远程分支名称
+
+当远程仓库中包含了当前本地仓库没有的更新内容时，给远程仓库推送内容之前，需要先把远程仓库里更新的内容拉去到本地:
+1. 先 git pull 远程仓库地址 远程分支名称
+2. 再 git push 远程仓库地址 本地分支名:远程分支名
+
+
+从远程库抓取数据:
+$	git fetch [remote-name]  (此命令会到远程库中拉取所有你本地库中还没有的数据。fetch的命令只是将远程库的数据拉到本地库，并不自动合并到当前工作分支，需要手工合并。)
+
+------------------------------------------------------------------------------------------------------------------------------
+仓库地址问题：
+
+我们可以在 git 中将当前项目的远程仓库地址保存起来，起一个别名，以后用的时候，直接用别名就行了：
+$	git remote add 别名 远程仓库地址url (例如：git remote add login git@github.com:lyhsyq/shop.git)
+
+查看所有的别名：
+$	git remote
+$	git remote -v 查看你当前的 remote url
+
+删除和重命名别名：
+$	git remote remove <name>
+$	git remote rename [remote-name] [new-remote-name]  
+
+获取当前别名对应的仓库地址：
+$	git remote get-url 别名
+
+设置当前别名对应的仓库地址：
+$	git remote set-url 别名 url地址
+
+通过git clone获取到的项目中，默认就有一个别名 origin 指向的就是当时clone项目的地址
+----------------------------------------------------------------------------------------------------------------------------------
+使用ssh链接
+
+先在gitup上修改为使用ssh连接，然后复制此ssh链接，然后使用命令 git remote set-url 来调整你的url
+
+git remote set-url origin git@github.com:weihandong/HDWeiRepository.git
+
+//码云第一次连接
+git remote add origin git@gitee.com:qiphon/music-thumb.git
+git push -u origin master
+
+
+
+
