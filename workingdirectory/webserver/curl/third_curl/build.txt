@@ -1,0 +1,17 @@
+configure前可用./configure -help命令查看所有配置的说明，下面是我的配置： 
+./configure --prefix=/opt/curl-7.50.2/ --build=i686-Linux --host=arm-linux CC=/opt/arm-linux-gcc-4.5.1/bin/arm-none-linux-gnueabi-gcc CFLAGS='-Os' --enable-debug  --enable-optimize  --enable-static --disable-dict --disable-ares --disable-threaded-resolver --disable-rtsp --disable-ftp --disable-ldap --disable-ldaps --disable-proxy --disable-telnet  --disable-tftp   --disable-pop3   --disable-imap   --disable-smtp --disable-gopher  --disable-ipv6 --without-zlib --without-ssl  --enable-http   -enable-crypto-auth  --without-gnutls --without-nss --without-ca-bundle --with-random=/dev/urandom export LDFLAGS="-static -L/opt/arm-linux-gcc-4.5.1/lib" && LDFLAGS="-static -L/opt/arm-linux-gcc-4.5.1/lib"
+--prefix=/opt/curl-7.50.2/: make install后目标文件存放路径；
+--build=i686-linux: 当前编译动作所处环境；
+--host=arm-linux: 目标编译出来后的运行环境，arm-linux
+CC=/opt/arm-linux-gcc-4.5.1/bin/arm-none-linux-gnueabi-gcc: 交叉编译器路径，按实际情况配置
+--enable-debug  --enable-optimize  --enable-static --disable-dict --disable-ares --disable-threaded-resolver --disable-rtsp --disable-ftp --disable-ldap --disable-ldaps --disable-proxy --disable-telnet  --disable-tftp   --disable-pop3   --disable-imap   --disable-smtp --disable-gopher  --disable-ipv6 --without-zlib --without-ssl  --enable-http   -enable-crypto-auth  --without-gnutls --without-nss --without-ca-bundle --with-random=/dev/urandom
+上面是编译libcurl选项，根据个人需要进行配置；
+3. 编译Libcurl 
+make 
+make install; 
+make install命令可省略，make执行完，目标文件libcurl.a已经生成。 
+
+4. 为使用Libcurl做准备 
+编码生成的目标文件libcurl.a在lib/.libs目录下，已我的编译环境为例： 
+root@sar:/code/tool/libcurl/curl-7.50.2/lib/.libs#  
+将该目录下的libcurl.a和include/curl目录下.h文件拷贝到自己项目中即可 
