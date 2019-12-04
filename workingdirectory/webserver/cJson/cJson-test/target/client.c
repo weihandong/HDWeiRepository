@@ -1,26 +1,21 @@
 #include <stdio.h>
+#include <string.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#include "tcpnet.h"
+typedef struct
+{
+    char firstName[32];
+    char lastName[32];
+    char email[64];
+    int age;
+    float height;
+}Person;
 
-#define  SERVERIP ""
-#define  PORT   1234
 
 
 int main(int argc, char**argv)
 {
-    uintptr_t fd = -1;
-    char pStr[] = "hello world";
-
-    if(0 > (fd=TCP_Establish(SERVERIP, PORT))
-    {
-         printf("server connect failed \r\n");
-    }
-
-    TCP_Write(fd, pStr, sizeof(pStr), 100);
-
-    while()p
-    TCP_Read()
- 
-
 
 }

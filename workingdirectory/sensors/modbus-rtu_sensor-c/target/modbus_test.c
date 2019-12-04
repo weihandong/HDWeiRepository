@@ -47,7 +47,7 @@ void releaseModbus_RTU(modbus_t *mb)
 //温湿度传感器初始化
 static void temperature_humidity_initial(void)
 {
-    mb1 = initModbus_RTU("/dev/ttyUSB0", 0, 1000000);
+    mb1 = initModbus_RTU("/dev/ttyUSB1", 0, 1000000);
     if(mb1)
     {
         printf("mb1 open successed \r\n");
@@ -56,7 +56,7 @@ static void temperature_humidity_initial(void)
 //噪声传感器初始化
 static void noise_initial(void)
 {
-    mb2 = initModbus_RTU("/dev/ttyUSB1", 0, 1000000);
+    mb2 = initModbus_RTU("/dev/ttyUSB0", 0, 1000000);
     if(mb2)
     {
         printf("mb2 open successed \r\n");

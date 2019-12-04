@@ -10,7 +10,9 @@
 extern pthread_t *Sensors_ThreadStart(void);
 
 
-modbus_t *mb = NULL;
+modbus_t *mb1 = NULL;
+modbus_t *mb2 = NULL;
+
 
 modbus_t *initModbus_RTU(char *pdevpath, uint32_t sec, uint32_t usec)
 {
@@ -39,25 +41,24 @@ void releaseModbus_RTU(modbus_t *mb)
 }
 static void temperature_humidity_initial(void)
 {
-    mb = initModbus_RTU("/dev/ttyUSB1", 0, 1000000);
+    mb1 = initModbus_RTU("/dev/ttyUSB1", 0, 1000000);
 }
 static void noise_initial(void)
 {
-    mb = initModbus_RTU("/dev/ttyUSB1", 0, 1000000);
+    mb2 = initModbus_RTU("/dev/ttyUSB2", 0, 1000000);
 }
 static void temperature_humidity_handler(void *data)
 {
     uint16_t *tab_reg = (uint16_t*)data;
 
-    modbus_read_registers(mb, 0, 2, tab_reg);
+    modbus_read_registers(mb1, 0, 2, tab_reg);
 }
 
 static void noise_handler(void *data)
 {
     uint16_t *tab_reg = (uint16_t*)data;
 
-    modbus_read_registers(mb, 0, 1, tab_reg);
-    printf("read register done\r\n");
+    modbus_read_registers(mb2, 0, 1, tab_reg);
 }
 void *temperature_humidity_thread(void *argv)
 {
@@ -132,11 +133,14 @@ int main(int argc, char *argv[])
     while(1)
     {
         printf("-------------------------\r\n");
-        printf("sensor1 data:%d %d\r\n", th_regs[0],th_regs[1]);
-        printf("sensor2 data:%d \r\n", noise);
+        printf("sensor1 data:%.2f %.2f\r\n", th_regs[0]*0.01,th_regs[1]*0.01);
+        printf("sensor2 data:%.1f \r\n", noise*0.1);
         printf("sensor3 data:%d \r\n", sensor3);
         sleep(2);
     }
+
+    releaseModbus_RTU(mb1);
+    releaseModbus_RTU(mb2);
 
     return 0;
 }
