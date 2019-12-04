@@ -6,7 +6,8 @@
 #include "sensorhandler.h"
 
 extern void sensors_poll(void);
-modbus_t *mb = NULL;
+modbus_t *mb1 = NULL;
+modbus_t *mb2 = NULL;
 
 
 
@@ -43,27 +44,50 @@ void releaseModbus_RTU(modbus_t *mb)
     //8-释放modbus资源
     modbus_free(mb);
 }
-
-void temperature_humidity_initial(void)
+//温湿度传感器初始化
+static void temperature_humidity_initial(void)
 {
-    mb = initModbus_RTU("/dev/ttyUSB0", 0, 1000000);
+    mb1 = initModbus_RTU("/dev/ttyUSB0", 0, 1000000);
+    if(mb1)
+    {
+        printf("mb1 open successed \r\n");
+    }
 }
-
-void temperature_humidity_handler(void *data)
+//噪声传感器初始化
+static void noise_initial(void)
+{
+    mb2 = initModbus_RTU("/dev/ttyUSB1", 0, 1000000);
+    if(mb2)
+    {
+        printf("mb2 open successed \r\n");
+    }
+}
+//温湿度传感器处理函数
+static void temperature_humidity_handler(void *data)
 {
     uint16_t *tab_reg = (uint16_t*)data;
 
     //6-读寄存器设置：寄存器地址、数量、数据缓冲
-    modbus_read_registers(mb, 0, 2, tab_reg);
+    modbus_read_registers(mb1, 0, 2, tab_reg);
+}
+
+static void noise_handler(void *data)
+{
+    uint16_t *tab_reg = (uint16_t*)data;
+
+    //6-读寄存器设置：寄存器地址、数量、数据缓冲
+    modbus_read_registers(mb2, 0, 1, tab_reg);
 }
 
 int main(int argc, char *argv[])
 {
     uint16_t tab_reg[2] = {0};
+    uint16_t noise = 0;
 
     initial_sensoritem();
     addto_sensoritem("temperature-humidity", temperature_humidity_initial, temperature_humidity_handler, tab_reg);
-
+    addto_sensoritem("noise-humidity", noise_initial, noise_handler, &noise);
+    sensors_initial();
     //5-循环读
     while(1)
     {   
@@ -72,13 +96,15 @@ int main(int argc, char *argv[])
         printf("-------------------------------------------\n");
         for(int i=0; i<2; i++)
         {
-	        printf("<%#x>",tab_reg[i]);
+	        printf("<%.2f>",tab_reg[i]*0.01);
         }
         printf("\n");
-        sleep(1);
+        printf("=========noise: %.1f\r\n",noise*0.1);
+        sleep(3);
     }
 
-    releaseModbus_RTU(mb);
+    releaseModbus_RTU(mb1);
+    releaseModbus_RTU(mb2);
 
     return 0;
 }

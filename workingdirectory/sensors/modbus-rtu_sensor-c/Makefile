@@ -34,7 +34,7 @@ else
      CC=gcc
 endif
 
-CFLAGS = -g -O -Wall 
+CFLAGS = -g -Wall 
 
 ${TARGET}: ${OBJS} 
 	${CC} ${OBJS} ${LIB} ${LIBVAR} -o $@
