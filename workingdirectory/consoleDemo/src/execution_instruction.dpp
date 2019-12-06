@@ -1,0 +1,3 @@
+execution_instruction.o: ../../src/execution_instruction.cpp \
+ ../../src/execution_instruction.h ../../src/arm_linux_uart.h \
+ ../../src/public.h ../../src/../include/HCNetSDK.h

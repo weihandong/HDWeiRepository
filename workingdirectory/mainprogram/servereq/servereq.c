@@ -58,7 +58,7 @@ bool isenable(int index)
     return implement_reqs[index].reqno_enable == true ? true : false ;
 }
 
-bool do_reqs(const int reqno)
+bool do_reqs(const int reqno, void *data)
 {
 	uint32_t offset;
 
@@ -67,7 +67,7 @@ bool do_reqs(const int reqno)
 		offset = req_offset(reqno - 0);
         if(isenable(offset))
         {
-		    (req_handler[offset].func)(req_handler[offset].data);
+		    (req_handler[offset].func)(data);
             return true;
         }
 	}
@@ -76,7 +76,7 @@ bool do_reqs(const int reqno)
 		offset = req_offset(reqno);
         if(isenable(offset))
         {
-		    (req_handler[offset + 32].func)(req_handler[offset + 32].data);
+		    (req_handler[offset + 32].func)(data);
             return true;
         }
 	}
@@ -85,7 +85,7 @@ bool do_reqs(const int reqno)
 		offset = req_offset(reqno);
         if(isenable(offset))
         {
-		    (req_handler[offset + 64].func)(req_handler[offset + 64].data);
+		    (req_handler[offset + 64].func)(data);
             return true;
         }
 	}

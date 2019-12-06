@@ -54,8 +54,6 @@ int main(int argc, char *argv[])
     char readbuff[MAXLINE];
     size_t writelen = 0;
     int readlen = 0;
-    size_t commdlen = 0;
-    int command = -1;
 
     // 打开FIFO
     pipefd = open(FIFO_NAME, O_RDWR, 0);
@@ -69,15 +67,17 @@ int main(int argc, char *argv[])
     while(1)
     {
         printf("请输入命令:");
-        commdlen = scanf("%d",&command);
-        if(command < 0 || command > 128)
+        readlen = scanf("%s", writebuff);
+
+        if(readlen > 20 )
         {
+            memset(writebuff, 0, MAXLINE);
             printf("命令无效,请重新输入:\r\n");
         }else{
             // 写入执行状态
-            itoa_my(command, writebuff, 10);
+            //itoa_my(command, writebuff, 10);
             printf("afsd:%s\r\n",writebuff);
-            writelen = write(pipefd, writebuff, strlen(writebuff));
+            writelen = write(pipefd, writebuff, readlen);
             if(writelen < 0)
             {
                 perror("写入FIFO失败");
@@ -89,6 +89,7 @@ int main(int argc, char *argv[])
                 printf("命令执行完成\r\n");
             else
                 printf("命令执行失败\r\n");
+
         }
     }
 

@@ -1,0 +1,2 @@
+Contral.o: ../../src/Contral.cpp ../../src/public.h \
+ ../../src/../include/HCNetSDK.h ../../src/Contral.h

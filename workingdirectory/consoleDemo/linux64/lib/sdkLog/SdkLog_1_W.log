@@ -1,0 +1,38 @@
+[2019-12-03 18:06:18.230][INF] The COM:HCCoreBase ver is 1.0.0.1, 2018_06_01. Async:1.
+[2019-12-03 18:06:18.230][INF] The COM:Core ver is 6.0.2.35, 2019_04_11. Async:1.
+[2019-12-03 18:06:18.230][INF] This HCNetSDK ver is 6.0.2.35 Ver 2019_04_11.
+[2019-12-03 18:06:18.230][INF] Login dev 192.168.31.173:8000.
+[2019-12-03 18:06:18.239][INF] Private connect 192.168.31.173:8000 sock=35 this=0x10f36a4 cmd=0x10000 port=41844
+[2019-12-03 18:06:18.240][INF] LogonDev1 in[192.168.31.173:8000]
+[2019-12-03 18:06:18.240][INF] CCoreGlobalCtrlBase::LoadDSoByPath, load path[libcrypto.so] success, handle[17798736]
+[2019-12-03 18:06:18.240][INF] CCoreGlobalCtrlBase::LoadDSo, load path[libcrypto.so] success, handle[17798736]
+[2019-12-03 18:06:18.241][INF] CCoreGlobalCtrlBase::LoadDSoByPath, load path[libssl.so] success, handle[17800336]
+[2019-12-03 18:06:18.241][INF] CCoreGlobalCtrlBase::LoadDSo, load path[libssl.so] success, handle[17800336]
+[2019-12-03 18:06:18.241][INF] SSLTRANSAPI::LoadAPI, libeay, Load Real Path[./libcrypto.so]
+[2019-12-03 18:06:18.241][INF] SSLTRANSAPI::LoadAPI, libssl, Load Real Path[./libssl.so]
+[2019-12-03 18:06:18.241][INF] SSLTRANSAPI::PrintVersion, OpenSSL version info [OpenSSL 1.0.2p  14 Aug 2018]
+[2019-12-03 18:06:18.241][INF] CSSLTrans::SSLCtxInit, dwSSLVersion[0], m_fnClientMethodV23
+[2019-12-03 18:06:18.242][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-03 18:06:18.320][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-03 18:06:18.337][ERR] AnalyzeLoginParams pSecurityInfo->dwDevTime=237416035,struLoginOutInfo.dwCheckTime=237461997, tickTime=45962
+[2019-12-03 18:06:18.337][INF] CAsyncManager::CreateHandle, m_dwCurrentCap[2], m_dwCurrentCount[1], iHandle[0]
+[2019-12-03 18:06:18.337][DBG] load full path[.//HCNetSDKCom/libHCPreview.so] succ
+[2019-12-03 18:06:18.337][INF] AbilityAnalyze---Init-- start
+[2019-12-03 18:06:18.338][DBG] AbilityAnalyze---Init-- over, DeviceList path [/home/hdwei/WorkData/LHT-ROBOT/consoleDemo/linux64/lib/HCNetSDKCom/LocalXml/DeviceList.xml], load result[0]
+[2019-12-03 18:06:18.338][INF] The COM:Preview ver is 6.0.2.35, 2019_04_11.
+[2019-12-03 18:06:18.341][INF] Private connect 192.168.31.173:8000 sock=37 this=0x10f3ae8 cmd=0x30000 port=41846
+[2019-12-03 18:06:18.347][INF] CAsyncManager::CreateHandle, m_dwCurrentCap[2], m_dwCurrentCount[2], iHandle[1]
+[2019-12-03 18:06:18.347][INF] ID-IP-CHAN[0-192.168.31.173-1] [CGetTCPStream::Start] Stream Head Data Callback Start
+[2019-12-03 18:06:18.347][INF] ID-IP-CHAN[0-192.168.31.173-1] [CGetTCPStream::Start] Stream Head Data Callback End
+[2019-12-03 18:06:18.348][DBG] ID-IP-CHAN[0-192.168.31.173-1] RTP Format
+[2019-12-03 18:06:23.783][INF] Login dev 192.168.31.173:8000.
+[2019-12-03 18:06:23.787][INF] Private connect 192.168.31.173:8000 sock=38 this=0x10f3f2c cmd=0x10000 port=41848
+[2019-12-03 18:06:23.787][INF] LogonDev1 in[192.168.31.173:8000]
+[2019-12-03 18:06:23.848][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-03 18:06:23.858][ERR] AnalyzeLoginParams pSecurityInfo->dwDevTime=238636110,struLoginOutInfo.dwCheckTime=238682078, tickTime=45968
+[2019-12-03 18:06:23.858][INF] CAsyncManager::CreateHandle, m_dwCurrentCap[4], m_dwCurrentCount[3], iHandle[2]
+[2019-12-03 18:06:23.862][INF] Private connect 192.168.31.173:8000 sock=39 this=0x10f4370 cmd=0x30000 port=41850
+[2019-12-03 18:06:23.868][INF] CAsyncManager::CreateHandle, m_dwCurrentCap[4], m_dwCurrentCount[4], iHandle[3]
+[2019-12-03 18:06:23.868][INF] ID-IP-CHAN[1-192.168.31.173-1] [CGetTCPStream::Start] Stream Head Data Callback Start
+[2019-12-03 18:06:23.868][INF] ID-IP-CHAN[1-192.168.31.173-1] [CGetTCPStream::Start] Stream Head Data Callback End
+[2019-12-03 18:06:23.868][DBG] ID-IP-CHAN[1-192.168.31.173-1] RTP Format

@@ -1,0 +1,2 @@
+PTZPCruise.o: ../../src/PTZPCruise.cpp ../../src/public.h \
+ ../../src/../include/HCNetSDK.h ../../src/PTZPCruise.h
