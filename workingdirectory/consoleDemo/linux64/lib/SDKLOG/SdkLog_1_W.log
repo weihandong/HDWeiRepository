@@ -1,1 +1,22 @@
-[2019-12-05 17:03:28.000][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:06:07.259][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:07:03.045][DBG] CUser::SendHeartWithExceptCB[0]
+[2019-12-09 02:07:11.562][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:08:34.366][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:09:03.056][DBG] CUser::SendHeartWithExceptCB[0]
+[2019-12-09 02:09:39.201][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:10:43.620][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:11:03.068][DBG] CUser::SendHeartWithExceptCB[0]
+[2019-12-09 02:11:47.879][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:13:03.081][DBG] CUser::SendHeartWithExceptCB[0]
+[2019-12-09 02:13:05.842][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:13:08.333][ERR] ID-IP:PORT[0-192.168.31.173:8000] [CMUXUser::SendCommandWithRecv()], readdata error, dwCommand[0x010200]
+[2019-12-09 02:13:08.333][DBG] [0]CUser::SendHeartWithExceptCB network error[10], times[1]
+[2019-12-09 02:13:08.333][ERR] Exception changes 1
+[2019-12-09 02:13:08.333][DBG]  CUser::ProcessException[0]
+[2019-12-09 02:14:12.255][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-09 02:15:03.094][DBG] CUser::SendHeartWithExceptCB[0]
+[2019-12-09 02:15:08.361][ERR] ID-IP:PORT[0-192.168.31.173:8000] [CMUXUser::SendCommandWithRecv()], readdata error, dwCommand[0x010200]
+[2019-12-09 02:15:08.361][DBG] [0]CUser::SendHeartWithExceptCB network error[10], times[1]
+[2019-12-09 02:15:08.361][ERR] Exception changes 1
+[2019-12-09 02:15:08.361][DBG]  CUser::ProcessException[0]
+[2019-12-09 02:15:16.651][ERR]  GetCAPath, Failed, Invalid pPath

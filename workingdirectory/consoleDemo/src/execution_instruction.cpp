@@ -5,11 +5,33 @@
 
 #include "public.h"
 
+#define DEBUG
+
 #ifdef DEBUG
 #include <iostream>
 using namespace std;
 #endif
 
+
+int g_errorno = 0;
+
+static void set_errorno(void)
+{
+    int errorno = 0;
+
+    errorno =  NET_DVR_GetLastError();
+    g_errorno = errorno;
+}
+
+static int get_errorno(void)
+{
+    int errorno;
+
+    errorno = g_errorno;
+    g_errorno = 0;
+
+    return errorno;
+}
 
 typedef struct {
     const char *name;
@@ -49,7 +71,7 @@ static command_t command_lit[] = {
 
 
 static instruction_t instruction_lit[] = {
-    {"turn_stop", 0, {0xff,0x01,0x00,0x00,0x00,0x00,0x01}},
+    {"mv_stop", 0, {0xff,0x01,0x00,0x00,0x00,0x00,0x01}},
 	{"tilt_up", TILT_UP, {0xff,0x01,0x00,0x08,0x00,0xff,0x08}},
 	{"tilt_down", TILT_DOWN, {0xff,0x01,0x00,0x10,0x00,0xff,0x10}},
 	{"pan_left", PAN_LEFT, {0xff,0x01,0x00,0x04,0xff,0x00,0x04}},
@@ -66,9 +88,6 @@ static instruction_t instruction_lit[] = {
 int Login_Equipment(loginfo_t *loginfo)
 {
     NET_DVR_Init();
-    //Demo_SDK_Version();
-    //NET_DVR_SetLogToFile(3, "./sdkLog");
-    
     //Login device
     NET_DVR_USER_LOGIN_INFO struLoginInfo = {0};
     NET_DVR_DEVICEINFO_V40 struDeviceInfoV40 = {0};
@@ -83,11 +102,11 @@ int Login_Equipment(loginfo_t *loginfo)
 
     if (lUserID < 0)
     {
+        set_errorno();
 #ifdef DEBUG
         cout << "login device error: " << NET_DVR_GetLastError() << endl;
 #endif
         NET_DVR_Cleanup();
-
         return HPR_ERROR;
     }
 
@@ -98,6 +117,7 @@ BOOL Logout_Equipment(int lUserID)
 {
     if(FALSE == NET_DVR_Logout_V30(lUserID))
     {
+        set_errorno();
 #ifdef DEBUG
         cout << "logout device error: " << NET_DVR_GetLastError() << endl;
 #endif
@@ -106,6 +126,7 @@ BOOL Logout_Equipment(int lUserID)
 
     if(FALSE == NET_DVR_Cleanup())
     {
+        set_errorno();
 #ifdef DEBUG
         cout << "cleanup error: " << NET_DVR_GetLastError() << endl;
 #endif
@@ -118,13 +139,13 @@ BOOL Logout_Equipment(int lUserID)
 
 
 
-bool Exec_Command(const char *str_cmd, void *data)
+int Exec_Command(const char *str_cmd, void *data)
 {
     unsigned int i; 
     command_t *srt_cmd = 0;
 
     if(str_cmd == NULL)
-        return false;
+        return -1;
 
     for(i = 0; i < ARRAY_SIZE(command_lit); i++)
     {
@@ -138,10 +159,10 @@ bool Exec_Command(const char *str_cmd, void *data)
     if(srt_cmd != 0)
     {
         srt_cmd->func(data);
-        return true;
+        return get_errorno();
     }
 
-    return false;
+    return -1;
 }
 
 
@@ -172,7 +193,7 @@ bool Exec_Instruction(uart_dev_t *uart, int argc , char *argv[])
 	if(argc > 0)
 	{
         if(argc == 1){
-            if(argv[0] == "")
+            if(argv[0] == NULL)
                 return false;
 
             for(i = 0; i < ARRAY_SIZE(instruction_lit); i++)
@@ -213,6 +234,60 @@ bool Exec_Instruction(uart_dev_t *uart, int argc , char *argv[])
 }
 
 
+int Exec_Instruction(uart_dev_t *uart, char *instruct, char *value)
+{
+	unsigned int i;
+	instruction_t * cmd = 0;
+
+    if(instruct == NULL)
+        return -1;
+
+    for(i = 0; i < ARRAY_SIZE(instruction_lit); i++)
+    {
+        cmd = &instruction_lit[i];
+        if(strncmp(cmd->name, instruct, strlen(instruct)) == 0)
+            break;
+        else
+            cmd = 0;
+    }
+
+    if(cmd == 0)
+    {
+        return -1;
+    }else{
+        //执行发送指令
+        if(0 == Uart_Send(uart, cmd->pelco_d, sizeof(cmd->pelco_d)))
+            return 0;
+    }    
+
+    return -2;
+}
+
+int Exec_Instruction(uart_dev_t *uart, int instruct, char *value)
+{
+	unsigned int i;
+	instruction_t * cmd = 0;
+
+    for(i = 0; i < ARRAY_SIZE(instruction_lit); i++)
+    {
+        cmd = &instruction_lit[i];
+        if(cmd->instruction_no == instruct)
+            break;
+        else
+            cmd = 0;
+    }
+
+    if(cmd == 0)
+    {
+        return -1;
+    }else{
+        //执行发送指令
+        if(0 == Uart_Send(uart, cmd->pelco_d, sizeof(cmd->pelco_d)))
+            return 0;
+    }    
+
+    return -2;
+}
 /************************************************************************************/
 extern int g_userID;
 
