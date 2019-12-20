@@ -1,0 +1,2 @@
+CUartDev.o: ../../src/ServerHandler/CUartDev.cpp \
+ ../../src/ServerHandler/CUartDev.h

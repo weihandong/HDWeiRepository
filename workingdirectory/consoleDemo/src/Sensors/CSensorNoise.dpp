@@ -1,0 +1,5 @@
+CSensorNoise.o: ../../src/Sensors/CSensorNoise.cpp \
+ ../../src/Sensors/CSensorNoise.h ../../src/Sensors/CSensor.h \
+ ../../include/modbus.h ../../include/modbus-version.h \
+ ../../include/modbus-tcp.h ../../include/modbus.h \
+ ../../include/modbus-rtu.h

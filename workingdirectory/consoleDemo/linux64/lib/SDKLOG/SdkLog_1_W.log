@@ -1,22 +1,4 @@
-[2019-12-09 02:06:07.259][ERR]  GetCAPath, Failed, Invalid pPath
-[2019-12-09 02:07:03.045][DBG] CUser::SendHeartWithExceptCB[0]
-[2019-12-09 02:07:11.562][ERR]  GetCAPath, Failed, Invalid pPath
-[2019-12-09 02:08:34.366][ERR]  GetCAPath, Failed, Invalid pPath
-[2019-12-09 02:09:03.056][DBG] CUser::SendHeartWithExceptCB[0]
-[2019-12-09 02:09:39.201][ERR]  GetCAPath, Failed, Invalid pPath
-[2019-12-09 02:10:43.620][ERR]  GetCAPath, Failed, Invalid pPath
-[2019-12-09 02:11:03.068][DBG] CUser::SendHeartWithExceptCB[0]
-[2019-12-09 02:11:47.879][ERR]  GetCAPath, Failed, Invalid pPath
-[2019-12-09 02:13:03.081][DBG] CUser::SendHeartWithExceptCB[0]
-[2019-12-09 02:13:05.842][ERR]  GetCAPath, Failed, Invalid pPath
-[2019-12-09 02:13:08.333][ERR] ID-IP:PORT[0-192.168.31.173:8000] [CMUXUser::SendCommandWithRecv()], readdata error, dwCommand[0x010200]
-[2019-12-09 02:13:08.333][DBG] [0]CUser::SendHeartWithExceptCB network error[10], times[1]
-[2019-12-09 02:13:08.333][ERR] Exception changes 1
-[2019-12-09 02:13:08.333][DBG]  CUser::ProcessException[0]
-[2019-12-09 02:14:12.255][ERR]  GetCAPath, Failed, Invalid pPath
-[2019-12-09 02:15:03.094][DBG] CUser::SendHeartWithExceptCB[0]
-[2019-12-09 02:15:08.361][ERR] ID-IP:PORT[0-192.168.31.173:8000] [CMUXUser::SendCommandWithRecv()], readdata error, dwCommand[0x010200]
-[2019-12-09 02:15:08.361][DBG] [0]CUser::SendHeartWithExceptCB network error[10], times[1]
-[2019-12-09 02:15:08.361][ERR] Exception changes 1
-[2019-12-09 02:15:08.361][DBG]  CUser::ProcessException[0]
-[2019-12-09 02:15:16.651][ERR]  GetCAPath, Failed, Invalid pPath
+[2019-12-19 23:58:16.055][INF] Login dev :0.
+[2019-12-19 23:58:16.055][ERR] Private connect :0 sock=35 this=0x21570b4 cmd=0x10000 sys_err=111, timeout= 3500
+[2019-12-19 23:58:16.055][ERR] [:0]LogonDevice Link_CreateLink fail[7].
+[2019-12-19 23:58:29.496][INF] COM_Logout[-1][0]

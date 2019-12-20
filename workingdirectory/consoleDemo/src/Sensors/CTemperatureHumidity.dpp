@@ -1,0 +1,5 @@
+CTemperatureHumidity.o: ../../src/Sensors/CTemperatureHumidity.cpp \
+ ../../src/Sensors/CTemperatureHumidity.h ../../src/Sensors/CSensor.h \
+ ../../include/modbus.h ../../include/modbus-version.h \
+ ../../include/modbus-tcp.h ../../include/modbus.h \
+ ../../include/modbus-rtu.h

@@ -1,1 +1,0 @@
-arm_linux_uart.o: ../../src/arm_linux_uart.cpp ../../src/arm_linux_uart.h

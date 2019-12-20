@@ -1,0 +1,4 @@
+CCO2.o: ../../src/Sensors/CCO2.cpp ../../src/Sensors/CCO2.h \
+ ../../src/Sensors/CSensor.h ../../include/modbus.h \
+ ../../include/modbus-version.h ../../include/modbus-tcp.h \
+ ../../include/modbus.h ../../include/modbus-rtu.h

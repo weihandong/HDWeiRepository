@@ -1,0 +1,2 @@
+CPTZ.o: ../../src/PTZ/CPTZ.cpp ../../src/public.h \
+ ../../src/../include/HCNetSDK.h ../../src/PTZ/CPTZ.h

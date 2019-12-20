@@ -1,0 +1,6 @@
+CSensorOpt.o: ../../src/Sensors/CSensorOpt.cpp \
+ ../../src/Sensors/CTemperatureHumidity.h ../../src/Sensors/CSensor.h \
+ ../../include/modbus.h ../../include/modbus-version.h \
+ ../../include/modbus-tcp.h ../../include/modbus.h \
+ ../../include/modbus-rtu.h ../../src/Sensors/CSensorNoise.h \
+ ../../src/Sensors/CCO2.h ../../src/Sensors/CSensorOpt.h
